@@ -36,12 +36,15 @@
     <Compile Include="app\tests.py" />
     <Compile Include="app\views.py" />
     <Compile Include="app\__init__.py" />
-    <Compile Include="app\migrations\__init__.py" />
+    <Compile Include="polls\migrations\__init__.py" />
     <Compile Include="manage.py" />
     <Compile Include="DjangoWeb\__init__.py" />
     <Compile Include="DjangoWeb\settings.py" />
     <Compile Include="DjangoWeb\urls.py" />
     <Compile Include="DjangoWeb\wsgi.py" />
+    <Compile Include="polls\apps.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="polls\models.py" />
     <Compile Include="polls\tests.py" />
     <Compile Include="polls\views.py" />
@@ -49,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
-    <Folder Include="app\migrations\" />
+    <Folder Include="polls\migrations\" />
     <Folder Include="app\static\" />
     <Folder Include="app\static\app\" />
     <Folder Include="app\static\app\content\" />
