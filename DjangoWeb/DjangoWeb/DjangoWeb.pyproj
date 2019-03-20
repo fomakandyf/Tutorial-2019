@@ -71,6 +71,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\templates\registration\loggedoff.html" />
+    <Content Include="polls\templates\polls\detail.html">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="polls\templates\polls\index.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
