@@ -3,9 +3,9 @@ Definition of urls for DjangoWeb.
 """
 
 from datetime import datetime
-from django.conf.urls import url
-import django.contrib.auth.views
-from django.conf.urls import include
+from DjangoWeb import urls
+from django.urls import path
+from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib import admin
 admin.autodiscover()
 
@@ -14,18 +14,20 @@ import app.views
 import polls.views
 
 # Uncomment the next lines to enable the admin:
-# from django.conf.urls import include
-# from django.contrib import admin
-# admin.autodiscover()
+from django.conf.urls import include
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = [
-    # Examples:
-    url(r'^$', app.views.home, name='home'),
-    url(r'^polls$', polls.views.index, name='index'),
-    url(r'^contact$', app.views.contact, name='contact'),
-    url(r'^about$', app.views.about, name='about'),
-    url(r'^login/$',
-        django.contrib.auth.views.login,
+    path('', app.views.home, name='home'),
+    path('polls', polls.views.index, name='index'),
+    path('<int:question_id>/', polls.views.detail, name='detail'),
+    path('<int:question_id>/results', polls.views.results, name='results'),
+    path('<int:question_id>/vote', polls.views.vote, name='vote'),
+    path('contact', app.views.contact, name='contact'),
+    path('about', app.views.about, name='about'),
+    path('login/',
+        LoginView.as_view(),
         {
             'template_name': 'app/login.html',
             'authentication_form': app.forms.BootstrapAuthenticationForm,
@@ -36,17 +38,16 @@ urlpatterns = [
             }
         },
         name='login'),
-    url(r'^logout$',
-        django.contrib.auth.views.logout,
+    path('logout',
+        LogoutView.as_view(),
         {
             'template_name': 'app/loggedoff.html',
-            # 'next_page': '/',
         },
         name='logout'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    path('admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
+    path('admin/', admin.site.urls),
 ]
