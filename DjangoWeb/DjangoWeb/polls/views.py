@@ -1,25 +1,19 @@
 
 from django.shortcuts import render
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse
+from .models import Question
 
 def index(request):
-    """Renders the home page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'polls/index.html',
-        {
-            'title':'Polls Page',
-            'content':"Welcome to the polls application",
-        }
-    )
+    lastest_question_list = Question.objects.order_by('pub_date')[:5]
+    output = ', '.join([q.question_text for q in lastest_question_list])
+    return HttpResponse(output)
 
 def detail(request, question_id):
-    return HttpRequest("You are looking at question %s." % question_id)
+    return HttpResponse("You're looking at question %s." % question_id)
 
 def results(request, question_id):
-    response = "You are looking as the results of question %s"
-    return HttpRequest( response % question_id)
+    response = "You're looking at the results of question %s."
+    return HttpResponse(response % question_id)
 
 def vote(request, question_id):
-    return HttpRequest("You aew voting on question %s" % question_id)
+    return HttpResponse("You're voting on question %s." % question_id)

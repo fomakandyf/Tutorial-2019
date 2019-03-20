@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\" />
+    <Folder Include="app\templates\registration\" />
     <Folder Include="polls\migrations\" />
     <Folder Include="app\static\" />
     <Folder Include="app\static\app\" />
@@ -69,7 +70,7 @@
     <Folder Include="polls\templates\polls\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="app\templates\app\loggedoff.html" />
+    <Content Include="app\templates\registration\loggedoff.html" />
     <Content Include="polls\templates\polls\index.html" />
     <Content Include="requirements.txt" />
     <Content Include="db.sqlite3" />
@@ -99,8 +100,8 @@
     <Content Include="app\templates\app\contact.html" />
     <Content Include="app\templates\app\index.html" />
     <Content Include="app\templates\app\layout.html" />
-    <Content Include="app\templates\app\login.html" />
-    <Content Include="app\templates\app\loginpartial.html" />
+    <Content Include="app\templates\registration\login.html" />
+    <Content Include="app\templates\registration\loginpartial.html" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.html">
