@@ -7,20 +7,11 @@ Replace this with more appropriate tests for your application.
 
 import django
 from django.test import TestCase
+from django.utils import timezone
 
-# TODO: Configure your database in settings.py and sync before running tests.
+from .models import Question
 
-class SimpleTest(TestCase):
-    """Tests for the application views."""
-
-    if django.VERSION[:2] >= (1, 7):
-        # Django 1.7 requires an explicit setup() when running tests in PTVS
-        @classmethod
-        def setUpClass(cls):
-            django.setup()
-
-    def test_basic_addition(self):
-        """
-        Tests that 1 + 1 always equals 2.
-        """
-        self.assertEqual(1 + 1, 2)
+def test_was_published_recently_with_future_question(self):
+    time = timezone.now + datetime.timedelta(dadict_keys=30)
+    future_question = Question(pub_date=time)
+    self.assertIs(future_question.was_published_recently_recently(), False)
